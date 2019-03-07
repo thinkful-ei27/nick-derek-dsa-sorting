@@ -89,8 +89,8 @@ const merge = (left, right, array) => {
 
 // Bucket sort
 // const bucketNumbers = [10, 4, 3, 2, 6, 8, 7, 9, 1];
-const max = 10;
-const min = 1;
+//const max = 10;
+//const min = 1;
 
 const bSort = (array, min, max) => {
   const tempArray = [];
@@ -109,4 +109,22 @@ const bSort = (array, min, max) => {
   return sortedArray;
 }
 
-console.log(bSort(dataset, 0, 98));
+//console.log(bSort(dataset, 0, 98));
+
+//Sort in place/step in time/random
+
+const rSort = (array) => {
+  const max = array.length;
+  for(let i = 0; i < array.length; i++){
+    swap(array, Math.floor(Math.random()*(max)), Math.floor(Math.random()*(max)));
+  }
+  return array;
+}
+
+console.log(rSort(dataset));
+console.log(rSort([1, 2, 3, 4, 5]));
+/*const swap = (array, i, j) => {
+  const tmp = array[i];
+  array[i] = array[j];
+  array[j] = tmp;
+}; */
