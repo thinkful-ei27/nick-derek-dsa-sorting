@@ -4,14 +4,14 @@ const datastring = '89 30 25 32 72 70 51 42 25 24 53 55 78 50 13 40 48 32 26 2 1
 const dataset = datastring.split(' ').map(num => Number(num));
 
 // Quick sort
-const qSort = (array, start = 0, end = array.length) => {
+const qSort = (array, start = 0, end = array.length, steps = 1) => {
   if (start >= end) {
     return array;
   }
 
   const middle = partition(array, start, end);
-  array = qSort(array, start, middle);
-  array = qSort(array, middle + 1, end);
+  array = qSort(array, start, middle, steps++);
+  array = qSort(array, middle + 1, end, steps++);
   return array;
 };
 
@@ -21,7 +21,7 @@ const partition = (array, start, end) => {
   for (let i = start; i < end - 1; i++) {
     if (array[i] <= pivot) {
       swap(array, i, j);
-      j++
+      j++;
     }
   }
   swap(array, end - 1, j);
@@ -35,3 +35,43 @@ const swap = (array, i, j) => {
 };
 
 console.log(qSort(dataset));
+
+// Merge Sort
+const mSort = array => {
+  if (array.length <= 1) {
+    return array;
+  }
+
+  const middle = Math.floor(array.length / 2);
+  let left = array.slice(0, middle);
+  let right = array.slice(middle, array.length);
+
+  left = mSort(left);
+  right = mSort(right);
+  return merge(left, right, array);
+};
+
+const merge = (left, right, array) => {
+  let leftIndex = 0;
+  let rightIndex = 0;
+  let outputIndex = 0;
+  while (leftIndex < left.length && rightIndex < right.length) {
+    if (left[leftIndex] < right[rightIndex]) {
+      array[outputIndex++] = left[leftIndex++];
+    }
+    else {
+      array[outputIndex++] = right[rightIndex++];
+    }
+  }
+
+  for (let i = leftIndex; i < left.length; i++) {
+    array[outputIndex++] = left[i];
+  }
+
+  for (let i = rightIndex; i < right.length; i++) {
+    array[outputIndex++] = right[i];
+  }
+  return array;
+};
+
+// console.log(mSort(dataset));
