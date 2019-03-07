@@ -88,3 +88,25 @@ const merge = (left, right, array) => {
 // console.log(mSort(dataset));
 
 // Bucket sort
+// const bucketNumbers = [10, 4, 3, 2, 6, 8, 7, 9, 1];
+const max = 10;
+const min = 1;
+
+const bSort = (array, min, max) => {
+  const tempArray = [];
+  for(let i = 0; i <= max; i++){
+      tempArray.push('x');
+  }
+  for(let i = 0; i < array.length; i++){
+      tempArray[array[i]] = 'y'; 
+  }
+  const sortedArray = [];
+  for(let i = 0; i < tempArray.length; i++){
+    if(tempArray[i] === 'y'){
+      sortedArray.push(i);
+    }
+  }
+  return sortedArray;
+}
+
+console.log(bSort(dataset, 0, 98));
