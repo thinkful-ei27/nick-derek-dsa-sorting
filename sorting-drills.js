@@ -121,10 +121,27 @@ const rSort = (array) => {
   return array;
 }
 
-console.log(rSort(dataset));
-console.log(rSort([1, 2, 3, 4, 5]));
+// console.log(rSort(dataset));
+// console.log(rSort([1, 2, 3, 4, 5]));
 /*const swap = (array, i, j) => {
   const tmp = array[i];
   array[i] = array[j];
   array[j] = tmp;
 }; */
+
+//Sorting Books (Talky)
+//Twenty books in alphabetical order
+
+//You can compare strings with <, >, etc. 'a' < 'b'.
+//We want to grab a pivot book and (I would like to register protest) bookmarks for the
+//pivot book and the book we are comparing. 
+//Grab the first book as pivot book [0], and last book [array.length -1] as the comparison book
+//If(last book is > pivot book){leave it alone, comparison book becomes lastbookindex - 1}
+//If(last book < pivot book){swap the books and comparison book becomes comparison book index + 1}
+//Every swap, the mathematical operation switches, like the Hungarian Folk Dance
+//When the comparison book marker meets the pivot book marker, the pivot book is in the correct spot
+//And we can run the algorithm on both sides of the pivot book.
+//RECURSION
+//Risk destroying the universe in order to sort things
+
+//Ultimately, yes, we can express this as an algorithm. 
